@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+  <h1>Repositories</h1>
+
+  <ul>
+    {% for repo in repos %}
+      <li><a href="/repo/{{ repo }}">{{ repo  }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <h1>Build for {{ repo_name }} on {{ branch }}</h1>
+
+  {% if build %}
+    <script>
+      var interval;
+
+      buildDone = function() {
+        if (interval) window.clearInterval(interval);
+        document.getElementById('build-download').style.display = '';
+        frame.scrollTo(0, frame.document.height);
+      }
+    </script>
+
+    <iframe id="build-results" onload="buildDone()" src="/repo/{{ repo_name }}/{{ branch }}/build" style="width:100%;height:200px"></iframe>
+
+    <script>
+        var frame = document.getElementById('build-results').contentWindow;
+        interval = window.setInterval(function() {
+            frame.scrollTo(0, frame.document.height);
+        }, 250);
+    </script>
+
+  {% endif %}
+
+  <div class="small-9 small-centered columns">
+    <a id="build-download" class="button success round" href="itms-services://?action=download-manifest&url={{ plist_url|urlencode }}" {% if build %}style="display:none"{% endif %}>Download</a>
+  </div>
+</div>
+{% endblock %}
