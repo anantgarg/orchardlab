@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Recipe Recorder",
+    "slug": "recipe-recorder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to record your voice while you describe a recipe."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to take photos and video clips of your cooking.",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to record your voice while you describe a recipe.",
+          "recordAudioAndroid": true
+        }
+      ],
+      "expo-video",
+      "expo-asset"
+    ]
+  }
+}
